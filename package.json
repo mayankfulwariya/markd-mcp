@@ -1,0 +1,23 @@
+{
+  "name": "markd-mcp",
+  "version": "1.0.0",
+  "description": "An MCP server to extract clean Markdown from web pages.",
+  "main": "src/index.js",
+  "bin": {
+    "markd-mcp": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": ["mcp", "markdown", "claude"],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^26.0.0",
+    "puppeteer": "^25.3.0",
+    "turndown": "^7.2.0"
+  }
+}
