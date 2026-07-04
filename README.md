@@ -18,9 +18,26 @@ One tool, does the job well:
   - Input: `{ url: "string" }`
   - What it does: fetches the URL, renders it fully, and hands back the main article as clean Markdown.
 
-## 💻 Running it locally
+## 🌍 Running it via NPM
 
-Haven't published to NPM yet? No problem, just run it from source.
+The fastest way to use Markd-MCP is via NPM. You don't even need to clone the repo.
+
+Add this to your `claude.json` (or use `claude mcp add`):
+
+```json
+{
+  "mcpServers": {
+    "markd-mcp": {
+      "command": "npx",
+      "args": ["-y", "markd-mcp"]
+    }
+  }
+}
+```
+
+## 💻 Running it locally (For Developers)
+
+If you want to modify the code or run it from source.
 
 ### 1. Install
 
@@ -56,21 +73,6 @@ Same snippet, different file:
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 Just swap in the real path to wherever you cloned the repo.
-
-## 🌍 Running it via NPM
-
-Once it's published, skip the clone entirely:
-
-```json
-{
-  "mcpServers": {
-    "markd-mcp": {
-      "command": "npx",
-      "args": ["-y", "markd-mcp"]
-    }
-  }
-}
-```
 
 ## Under the hood
 
