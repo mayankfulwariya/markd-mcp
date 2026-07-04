@@ -18,18 +18,25 @@ One tool, does the job well:
   - Input: `{ url: "string" }`
   - What it does: fetches the URL, renders it fully, and hands back the main article as clean Markdown.
 
-## 🌍 Running it via NPM
+## 🌍 How to Use (NPM Package)
 
-The fastest way to use Markd-MCP is via NPM. You don't even need to clone the repo.
+The fastest and most reliable way to use Markd-MCP across any machine (Windows, Mac, Linux) is to install it globally. This guarantees the headless Chrome browser is installed properly and makes the tool instant for your AI.
 
+### 1. Install Globally
+Open your terminal and run:
+```bash
+npm install -g markd-mcp
+```
+
+### 2. Add to Claude Code
 Add this to your `claude.json` (or use `claude mcp add`):
 
 ```json
 {
   "mcpServers": {
     "markd-mcp": {
-      "command": "npx",
-      "args": ["-y", "markd-mcp"]
+      "command": "markd-mcp",
+      "args": []
     }
   }
 }

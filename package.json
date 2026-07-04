@@ -1,6 +1,6 @@
 {
   "name": "markd-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An MCP server to extract clean Markdown from web pages.",
   "main": "src/index.js",
   "bin": {
