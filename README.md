@@ -1,32 +1,29 @@
 # Markd MCP Server
 
-An official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that brings the power of **Markd** natively into your AI coding workflows. 
+An official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that brings Markd straight into your AI coding workflow.
 
-## 🚀 The Mission: Stop Wasting Context Tokens
-When you ask an AI (like Claude or GPT-4) to read a webpage, it often tries to process raw HTML. A standard webpage's raw HTML can consume upwards of **25,000 to 30,000 tokens** due to massive inline styling, tracking scripts, and bloated DOM structures.
+## 🚀 Why this exists: stop burning context tokens
 
-**Markd** acts as a filter. It quietly spins up a headless Chrome browser (Puppeteer) in the background to perfectly render any JavaScript-heavy page, and then extracts *only* the pure, semantic content using Mozilla Readability and Turndown.
+Ask an AI like Claude or GPT-4 to read a webpage, and it usually ends up chewing through raw HTML. That raw HTML can easily run 25,000 to 30,000 tokens once you count inline styles, tracking scripts, and bloated DOM markup.
 
-The exact same article, extracted as clean Markdown, costs around **2,000 to 2,500 tokens**. By using this tool, you instantly achieve a **~90% reduction in token usage** when your AI researches the web—resulting in faster responses, cheaper API costs, and significantly less context degradation.
+Markd fixes that. It spins up a headless Chrome browser (via Puppeteer) in the background, fully renders the page (JavaScript included), and pulls out just the real content using Mozilla Readability and Turndown.
 
----
+That same article, converted to clean Markdown, comes out to around 2,000 to 2,500 tokens. That's roughly a 90% drop in token usage every time your AI pulls something off the web. Faster responses, cheaper API bills, and a lot less noise clogging up the context window.
 
-## 🛠️ Provided Tools
+## 🛠️ What it gives your AI
 
-This server exposes a single, powerful tool to your AI:
+One tool, does the job well:
 
-- `extract_markdown`
-  - **Input:** `{ url: "string" }`
-  - **Description:** Fetches a URL, renders it fully, and returns the main article content as a clean Markdown string.
+- **`extract_markdown`**
+  - Input: `{ url: "string" }`
+  - What it does: fetches the URL, renders it fully, and hands back the main article as clean Markdown.
 
----
+## 💻 Running it locally
 
-## 💻 How to Use (Local Setup)
+Haven't published to NPM yet? No problem, just run it from source.
 
-If you haven't published this to NPM yet, you can run it directly from the source code.
+### 1. Install
 
-### 1. Installation
-Clone the repository and install the dependencies (including Puppeteer's Chrome binary):
 ```bash
 git clone https://github.com/mayankfulwariya/markd-mcp.git
 cd markd-mcp
@@ -34,10 +31,11 @@ npm install
 npx puppeteer browsers install chrome
 ```
 
-### 2. Configure Your AI Client
+### 2. Point your AI client at it
 
-#### For Claude Code
-Add the following to your `claude.json` configuration file, or use the `claude mcp add` command:
+**Claude Code**
+
+Add this to your `claude.json`, or use the `claude mcp add` command:
 
 ```json
 {
@@ -50,19 +48,18 @@ Add the following to your `claude.json` configuration file, or use the `claude m
 }
 ```
 
-#### For Claude Desktop
-Add the same JSON snippet to your `claude_desktop_config.json` file:
-- **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+**Claude Desktop**
 
-*(Make sure to replace `/absolute/path/to/...` with the actual path to where you cloned the folder!)*
+Same snippet, different file:
 
----
+- Mac: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
-## 🌍 How to Use (NPM Package)
-*(If published to NPM)*
+Just swap in the real path to wherever you cloned the repo.
 
-You can configure Claude to run it directly without cloning the repo:
+## 🌍 Running it via NPM
+
+Once it's published, skip the clone entirely:
 
 ```json
 {
@@ -75,9 +72,8 @@ You can configure Claude to run it directly without cloning the repo:
 }
 ```
 
----
+## Under the hood
 
-## Under the Hood
-- **Puppeteer:** Ensures modern JS-heavy sites (like React/Next.js documentation pages) are fully rendered before extraction.
-- **Mozilla Readability:** The same engine that powers Firefox's Reader View, used to strip away sidebars, headers, footers, and ads.
-- **Turndown:** Converts the semantic HTML perfectly into Markdown.
+- **Puppeteer** – renders JS-heavy sites (React, Next.js docs, that kind of thing) fully before anything gets extracted.
+- **Mozilla Readability** – the same engine behind Firefox's Reader View. Strips out sidebars, headers, footers, ads, all the junk.
+- **Turndown** – turns the clean HTML into proper Markdown.
